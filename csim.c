@@ -44,7 +44,7 @@ void accessCache(Type** table, int s, int E, int b, unsigned long long addr, int
     // Check for hit
     for (int i = 0; i < E; i++) {
         if (set[i].flag && (uintptr_t)set[i].pTag == tag) {
-            (*hits)++;
+            ++(*hits);
             set[i].lruCount = (*lru_counter)++;
             if (verbose) {
                 printf(" hit");
@@ -54,7 +54,7 @@ void accessCache(Type** table, int s, int E, int b, unsigned long long addr, int
     }
     
     // Miss
-    (*misses)++;
+    ++(*misses);
     if (verbose) {
         printf(" miss");
     }
@@ -70,7 +70,7 @@ void accessCache(Type** table, int s, int E, int b, unsigned long long addr, int
     }
     
     // Eviction
-    (*evictions)++;
+    ++(*evictions);
     if (verbose) {
         printf(" eviction");
     }
