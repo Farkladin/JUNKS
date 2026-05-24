@@ -35,8 +35,8 @@ void clearAllocation(void) {
     }
 }
 
-void accessCache(Type** table, int s, int E, int b, unsigned long long addr, int* hits, int* misses, int* evictions, int* lru_counter, int verbose) {
-    uint64_t set_index = (addr >> b) & ((1 << s) - 1);
+void accessCache(Type** table, int s, int E, int b, uint64_t addr, int* hits, int* misses, int* evictions, int* lru_counter, int verbose) {
+    uint64_t set_index = (addr >> b) & ((1ULL << s) - 1);
     uint64_t tag = addr >> (s + b);
     
     Type* set = table[set_index];
@@ -159,7 +159,7 @@ int main(int argc, char* argv[]) {
     while (fgets(buf, sizeof(buf), file)) {
         if (buf[0] == ' ') {
             char op;
-            unsigned long long addr;
+            uint64_t addr;
             int size;
             if (sscanf(buf, " %c %llx,%d", &op, &addr, &size) == 3) {
                 if (v) {
