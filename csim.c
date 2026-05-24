@@ -126,7 +126,7 @@ int main(int argc, char* argv[]) {
         }
     }
     
-    if (!s || !E || !b || !t) {
+    if (s == -1 || E == -1 || b == -1 || !t) {
         printf("Usage: ./csim [-hv] -s <s> -E <E> -b <b> -t <tracefile>\n");
         return EXIT_FAILURE;
     }
@@ -172,6 +172,7 @@ int main(int argc, char* argv[]) {
                     accessCache(table, s, E, b, addr, &hits, &misses, &evictions, &lru_counter, v);
                 }
                 if (v) {
+                    fflush(stdout);
                     printf("\n");
                 }
             }
