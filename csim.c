@@ -89,7 +89,7 @@ void accessCache(Type** table, int s, int E, int b, uint64_t addr, int* hits, in
 }
 
 int main(int argc, char* argv[]) {
-    int s=0, E=0, b=0, v=0;
+    int s= -1, E= -1, b= -1, v= -1;
     char* t = nullptr;
     int opt;
     
